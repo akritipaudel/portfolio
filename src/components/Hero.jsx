@@ -37,7 +37,7 @@ export default function Hero() {
           variants={itemVariants}
           className="border border-sepia-400 bg-sepia-100 text-sepia-950 font-serif font-semibold text-xs tracking-[0.25em] uppercase px-4 py-1.5 rounded-full shadow-md select-none rotate-[-1deg] animate-drift-2"
         >
-          Est. 2026 / Codex Akriti
+          Est. 2026 / Akriti
         </motion.div>
 
         {/* Name & Role Card */}
