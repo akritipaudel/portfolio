@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Space+Grotesk:wght@300..700&family=Special+Elite&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "EB Garamond", serif;
+  --font-typewriter: "Special Elite", monospace;
+  --font-sans: "Space Grotesk", sans-serif;
+  
+  --color-sepia-950: #0a0807;
+  --color-sepia-900: #140f0c;
+  --color-sepia-800: #1e1612;
+  --color-sepia-700: #291e19;
+  --color-sepia-600: #423229;
+  --color-sepia-400: #8c6f56;
+  --color-sepia-300: #c5a880;
+  --color-sepia-200: #dfcfb9;
+  --color-sepia-100: #f4eae0;
+  --color-sepia-50: #faf6f0;
+  
+  --color-holo-cyan: #86e3ce;
+  --color-holo-amber: #ff9f68;
+  --color-holo-green: #a3e2c9;
+}
+
+/* Custom Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-sepia-950);
+  color: var(--color-sepia-100);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sepia-400) var(--color-sepia-900);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sepia-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sepia-600);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sepia-400);
+}
+
+/* Background Grids and Textures */
+.paper-grain {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.075'/%3E%3C/svg%3E");
+}
+
+.crt-scanlines {
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Nixie and Hologram Glows */
+.glow-text-amber {
+  text-shadow: 
+    0 0 4px rgba(255, 159, 104, 0.6), 
+    0 0 12px rgba(255, 159, 104, 0.3), 
+    0 0 30px rgba(255, 159, 104, 0.1);
+}
+
+.glow-text-cyan {
+  text-shadow: 
+    0 0 4px rgba(134, 227, 206, 0.6), 
+    0 0 12px rgba(134, 227, 206, 0.3), 
+    0 0 30px rgba(134, 227, 206, 0.1);
+}
+
+.glow-border-amber {
+  box-shadow: 
+    0 0 5px rgba(255, 159, 104, 0.2), 
+    inset 0 0 8px rgba(255, 159, 104, 0.1);
+  border-color: rgba(255, 159, 104, 0.4);
+}
+
+.glow-border-cyan {
+  box-shadow: 
+    0 0 5px rgba(134, 227, 206, 0.2), 
+    inset 0 0 8px rgba(134, 227, 206, 0.1);
+  border-color: rgba(134, 227, 206, 0.4);
+}
+
+/* Torn Edge SVG mask effect helper */
+.torn-paper {
+  position: relative;
+  background-color: var(--color-sepia-100);
+  color: var(--color-sepia-900);
+}
+
+/* Anti-gravity drift animations */
+@keyframes drift-1 {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes drift-2 {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(12px) rotate(-1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes drift-3 {
+  0% { transform: translateY(0px) rotate(0deg) translateX(0px); }
+  33% { transform: translateY(-6px) rotate(-0.5deg) translateX(3px); }
+  66% { transform: translateY(8px) rotate(1deg) translateX(-3px); }
+  100% { transform: translateY(0px) rotate(0deg) translateX(0px); }
+}
+
+.animate-drift-1 {
+  animation: drift-1 8s ease-in-out infinite;
+}
+
+.animate-drift-2 {
+  animation: drift-2 10s ease-in-out infinite;
+}
+
+.animate-drift-3 {
+  animation: drift-3 12s ease-in-out infinite;
+}
+
+/* CRT Screen Power On Effect */
+@keyframes crt-on {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+    filter: brightness(3);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+    filter: brightness(3);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+
+.crt-power-on {
+  animation: crt-on 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Flicker effect */
+@keyframes flicker {
+  0% { opacity: 0.98; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+.crt-flicker {
+  animation: flicker 0.15s infinite;
+}
