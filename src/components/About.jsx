@@ -121,9 +121,7 @@ export default function About() {
 
             {/* Handwriting annotation at the bottom */}
             <div className="mt-12 flex justify-between items-end">
-              <div className="font-serif italic text-sm text-sepia-500 max-w-[200px] leading-tight rotate-[-3deg]">
-                * "Gravity is nothing but a localized field distortion. Same is true for code."
-              </div>
+
               <div className="text-right">
                 <p className="font-typewriter text-[9px] text-sepia-400">AUTHOR SIGN-OFF</p>
                 <p className="font-serif italic text-xl text-sepia-900 tracking-wide mt-1 pr-2">
